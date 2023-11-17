@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,3 +31,37 @@
     </form>
 </body>
 </html>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice Generator</title>
+</head>
+<body>
+    <h1>Invoice Generator</h1>
+    <form action="generate_pdf.php" method="post">
+        <label for="resv_no">Reservation No:</label>
+        <input type="text" name="resv_no" required><br>
+
+        <label for="date">Booking Date:</label>
+        <input type="text" name="date" required><br>
+
+        <label for="name">Guest Name:</label>
+        <input type="text" name="name" required><br>
+
+        <label for="phn_no">Contact:</label>
+        <input type="text" name="phn_no" required><br>
+
+        <label for="email">Email:</label>
+        <input type="text" name="email" required><br>
+
+        <label for="num_days">Number of Days:</label>
+        <input type="text" name="num_days" required><br>
+
+        <input type="submit" value="Generate PDF">
+    </form>
+</body>
+</html>
+>>>>>>> f923bd934139adcb938d348af0c0debfb732443f
