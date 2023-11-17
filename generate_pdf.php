@@ -1,4 +1,27 @@
+<?php
 
+require 'vendor/autoload.php';
+
+use Spipu\Html2Pdf\Html2Pdf;
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $resv_no = htmlspecialchars($_POST['resv_no']);
+    $date = htmlspecialchars($_POST['date']);
+    $name = htmlspecialchars($_POST['name']);
+    $phn_no = htmlspecialchars($_POST['phn_no']);
+    $email = htmlspecialchars($_POST['email']);
+    $num_days = htmlspecialchars($_POST['num_days']);
+
+    $currentDateTime = new DateTime('now');
+    $currentDate = $currentDateTime->format('l, F j, Y');
+
+
+    // $timezone = date_default_timezone_get();
+    date_default_timezone_set('Africa/Nairobi');
+    $current_time = date('h:i:s A');
+
+    // Generate HTML content
+    $html_content = "
         <!DOCTYPE html>
         <html>
         <head>
@@ -37,51 +60,38 @@
             <link href='/css/bootstrap.min.css' rel='stylesheet'>
         </head>
         <body>
-        <script>
-        function displayDayTime(){
-        var currentdate = new Date();
-
-        var day = currentdate.toLocaleString('en-US', { weekday: 'short' });
-        var date =currentdate.getDate();
-        var month = currentdate.toLocaleString('default', { month: 'short' });
-        var year = currentdate.getFullYear();
-        var hours = currentdate.getHours();
-        var minutes = currentdate.getMinutes();
-        var seconds = currentdate.getSeconds();
-
-        var formattedDate = 'Date:'  + day + ' ' + date + ' ' + month + ' ' + year + '<br>';
-        var formattedTime = 'Time: ' + hours + ':' + minutes + ':' + seconds + '<br>';
-
-        document.write(formattedDate + formattedTime);
-        }
-</script>
             <div class='invoice-header'>
                 <img src='marley.png' alt='Logo' width='100' height='100'>
-                <h1>Nairobi, Kenya.</h1>
-                <h2 style='text-align: center;'>BNB Booking Invoice</h2>
-                <h1 style='text-align: right;padding-right: 35px;'>Invoice</h1>
-                <div style='text-align: right;padding-right: 35px;'><b>Reserv No: Nov2300008</b></div>
-                <div style='text-align: right;padding-right: 35px;'><b><script>displayDayTime()</script></b></div>
+                <h3 style='text-align: left;'>VIMAK INFOTECH LABS</h3>
+                <h4>Nairobi, Kenya.</h4>
+                
+            </div>
+            <div>
+                <div style='text-align: center; margin: right 50px; font-size: 20px;'><b>#Invoice</b></div>
+                <div style='text-align: right; margin: right 50px;'><b>Invoice Date:</b> $currentDate</div>
+                <div style='text-align: right; margin: right 50px;'><b>$current_time (GMT+3)</b></div>
+                <div style='text-align: right; margin: right 50px;'><b>Invoice No: $resv_no</b></div>
             </div>
             <div class='invoice-details'>
+                <div><b>Mr / Mrs: $name</b></div>
                 <div><hr/></div>
                 <div id='invoice-details' style='background-color:rgb(88, 88, 88);'><b># Reservation Description</b></div>
                 <div><hr/></div>
                 <div>
-                    <div><b>Reservation No:</b> Nov2300008</div>
-                    <div><b>Booking Date:</b> 2023-11-18</div>
-                    <div><b>Guest Name:</b> Marley</div>
-                    <div><b>Contact:</b> +254790884584</div>
+                    <div><b>Reservation No:</b> $resv_no</div>
+                    <div><b>Booking Date:</b> $date</div>
+                    <div><b>Guest Name:</b> $name</div>
+                    <div><b>Contact:</b> $phn_no</div>
                 </div>
                 <div><br></div>
                 <div><hr/></div>
                 <div id='invoice-details' style='background-color:rgb(88, 88, 88);'><b># Contact information</b></div>
                 <div><hr/></div>
                 <div>
-                    <div><b>Guest Name:</b> Marley</div>
-                    <div><b>Contact:</b> +254790884584</div>
-                    <div><b>Email:</b> ignatiusvmk@gmail.com</div>
-                    <div><b>No. of days:</b> 15</div>
+                    <div><b>Guest Name:</b> $name</div>
+                    <div><b>Contact:</b> $phn_no</div>
+                    <div><b>Email:</b> $email</div>
+                    <div><b>No. of days:</b> $num_days</div>
                 </div>
                 <div><br></div>
                 <div><hr/></div>
@@ -93,4 +103,20 @@
             </div>
         </body>
         </html>
-    # BNB_Invoicing-PHP-V1.0
+    ";
+
+    // Output HTML to a file
+    $html_filename = "invoicegenHTMLPDF2.html";
+    file_put_contents($html_filename, $html_content);
+
+    // HTML to PDF
+    $pdf_filename = "invoice" . $resv_no . ".pdf";
+    $html2pdf = new Html2Pdf();
+    $html2pdf->writeHTML($html_content);
+    $html2pdf->output($pdf_filename);
+
+    echo "PDF generated successfully: $pdf_filename";
+} else {
+    echo "Invalid request method";
+}
+?>

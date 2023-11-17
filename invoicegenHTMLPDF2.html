@@ -37,38 +37,25 @@
             <link href='/css/bootstrap.min.css' rel='stylesheet'>
         </head>
         <body>
-        <script>
-        function displayDayTime(){
-        var currentdate = new Date();
-
-        var day = currentdate.toLocaleString('en-US', { weekday: 'short' });
-        var date =currentdate.getDate();
-        var month = currentdate.toLocaleString('default', { month: 'short' });
-        var year = currentdate.getFullYear();
-        var hours = currentdate.getHours();
-        var minutes = currentdate.getMinutes();
-        var seconds = currentdate.getSeconds();
-
-        var formattedDate = 'Date:'  + day + ' ' + date + ' ' + month + ' ' + year + '<br>';
-        var formattedTime = 'Time: ' + hours + ':' + minutes + ':' + seconds + '<br>';
-
-        document.write(formattedDate + formattedTime);
-        }
-</script>
             <div class='invoice-header'>
                 <img src='marley.png' alt='Logo' width='100' height='100'>
-                <h1>Nairobi, Kenya.</h1>
-                <h2 style='text-align: center;'>BNB Booking Invoice</h2>
-                <h1 style='text-align: right;padding-right: 35px;'>Invoice</h1>
-                <div style='text-align: right;padding-right: 35px;'><b>Reserv No: Nov2300008</b></div>
-                <div style='text-align: right;padding-right: 35px;'><b><script>displayDayTime()</script></b></div>
+                <h3 style='text-align: left;'>VIMAK INFOTECH LABS</h3>
+                <h4>Nairobi, Kenya.</h4>
+                
+            </div>
+            <div>
+                <div style='text-align: center; margin: right 50px; font-size: 20px;'><b>#Invoice</b></div>
+                <div style='text-align: right; margin: right 50px;'><b>Invoice Date:</b> Friday, November 17, 2023</div>
+                <div style='text-align: right; margin: right 50px;'><b>05:25:45 PM (GMT+3)</b></div>
+                <div style='text-align: right; margin: right 50px;'><b>Invoice No: Nov2300009</b></div>
             </div>
             <div class='invoice-details'>
+                <div><b>Mr / Mrs: Marley</b></div>
                 <div><hr/></div>
                 <div id='invoice-details' style='background-color:rgb(88, 88, 88);'><b># Reservation Description</b></div>
                 <div><hr/></div>
                 <div>
-                    <div><b>Reservation No:</b> Nov2300008</div>
+                    <div><b>Reservation No:</b> Nov2300009</div>
                     <div><b>Booking Date:</b> 2023-11-18</div>
                     <div><b>Guest Name:</b> Marley</div>
                     <div><b>Contact:</b> +254790884584</div>
@@ -93,4 +80,4 @@
             </div>
         </body>
         </html>
-    # BNB_Invoicing-PHP-V1.0
+    
