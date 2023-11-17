@@ -73,6 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div style='text-align: right; margin: right 50px;'><b>Invoice No: $resv_no</b></div>
             </div>
             <div class='invoice-details'>
+                <div><b>Mr / Mrs: $name</b></div>
                 <div><hr/></div>
                 <div id='invoice-details' style='background-color:rgb(88, 88, 88);'><b># Reservation Description</b></div>
                 <div><hr/></div>
