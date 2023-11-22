@@ -40,4 +40,4 @@
 </div>
 </body>
 </html>
-    # BNB_Invoicing-PHP-V1.0
+# BNB_Invoicing-PHP-V2.0

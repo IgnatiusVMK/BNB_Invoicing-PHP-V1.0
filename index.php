@@ -86,7 +86,7 @@ if (!$conn1) {
             <h1>Invoice Generator</h1>
             <img src="marley.png" alt="logo" style="width: 50px;height: 50px;"> <br>
             <label for="resv_no" >Reservation No:</label>
-            <input type="text" name="resv_no" placeholder="<?php echo  $r_resvno?>"><br><br> <!-- required -->
+            <input type="text" name="resv_no" value="<?php echo  $r_resvno?>" readonly><br><br>
 
             <label for="date">Booking Date:</label>
             <input type="text" name="date" placeholder="YYYY-MM-DD" required><br><br>

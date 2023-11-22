@@ -1,9 +1,7 @@
 <?php
-
 $servername="localhost";
 $username="root";
 $password="";
-
 $dbname1="invoicing_system";
 
 $conn1= mysqli_connect($servername,$username,$password,$dbname1);
