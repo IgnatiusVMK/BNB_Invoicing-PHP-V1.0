@@ -1,5 +1,4 @@
 <?php
-
 //Require Config file to establish connection to DB
 require 'config.php';
 
