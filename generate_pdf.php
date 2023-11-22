@@ -20,11 +20,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     date_default_timezone_set('Africa/Nairobi');
     $current_time = date('h:i:s A');
 
+    require 'config.php';
+    $sql1 = "INSERT INTO test_automations (resv_no, date, name, phn_no, email, num_days) VALUES ('$resv_no', '$date', '$name', '$phn_no', '$email', '$num_days')";
+    $result1=mysqli_query($conn1,$sql1);
+    /* if ($result1) {
+        echo "Successfully Created this Record!";
+        // exit();
+    }
+    else{
+        echo "Failed to create this record!";
+    }
+ */
     // Generate HTML content
     $html_content = "
         <!DOCTYPE html>
         <html>
         <head>
+            <title>Invoice$resv_no</title>
             <style>
                 body {
                     font-family: 'Helvetica', sans-serif;
